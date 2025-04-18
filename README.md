@@ -1,3 +1,3 @@
 # StarBuilder
 Create your Own Extensions for Turbowarp in a fast way
-[jsj](https://xtenshins.github.io)
+[https://raw.githubusercontent.com/AlmejasHub/StarBuilder/refs/heads/main/StarBuilder.svg](https://xtenshins.github.io)
