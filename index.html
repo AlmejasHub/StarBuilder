@@ -32,6 +32,19 @@
     .tarjeta p {
       color: #ffffff;
     }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #ffeb3b;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
   </style>
 </head>
 <body>
@@ -39,7 +52,9 @@
   <div class="tarjeta">
     <img src="editor/StarBuilderT.svg"></img>
     <h4>Create Your Own Extensions For TurboWarp!</h4>
-    <p>Este es el contenido de una tarjeta con bordes redondeados y sombra.</p>
+   <button class="btn" onclick="window.location.href='editor'">
+  Open Editor
+</button>
   </div>
 
 </body>
