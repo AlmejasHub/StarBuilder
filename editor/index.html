@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GGBuilder</title>
+  <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=FCwV_4DlZCt9mBnkfCiPW7UrAgrcbIUE8PIIS-c4aiFkjdNMHO2hfqFi2U1U4PQRTgATD-xUq8Gg3mUX5DK2-3-qIwnC7Vjz3aYsX1kZF4jXQ29CD2RhlYETNLubSgxeYGo-ZsbiSOWOWCmO8xhZdct_wi5YiOM-WQnOHQKi1sZp2_ZRPSlYpsajFTNvo43vrtmVUZ3-apnJI6hT7xYpHFgN5YG4jw_gBI8sx-br601LYP5l8TNVFqMfpFjOBX_AxApOs8ii7tX3KJPs_ACAag" charset="UTF-8"></script><style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ccffcc;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .frame {
+      background-color: #c0ff85;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      margin: 50px auto;
+      flex-grow: 1;
+    }
+
+    .frame h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .frame input[type="text"],
+    .frame input[type="color"],
+    .frame textarea,
+    .frame select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      resize: vertical;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); 
+    }
+
+    .frame button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+    }
+
+    .frame button:hover {
+      background-color: #45a049;
+    }
+
+    #blocks {
+      background-color: #c0ff85;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      margin: 50px auto;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    #blocks h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    #blocks p {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .checkbox-container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      font-size: 16px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 5px;
+    }
+
+    .checkbox-container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    .checkbox-container input:checked ~ .checkmark {
+      background-color: #4CAF50;
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .checkbox-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .checkbox-container .checkmark:after {
+      left: 9px;
+      top: 5px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="frame">
+    <h1>GGBuilder</h1>
+    <h2>Extension</h2>
+    <p>Extension Name:<input type="text" placeholder="ex. Extension" value="My Extension" id="EXT"></p>
+    <p>Extension ID:<input type="text" placeholder="ex. extensionid" value="extensionid" id="EXTID"></p>
+    <p>Extension Primary Color:<input type="color" id="EXTCOLOR" value="#082799"></p>
+    <p>Extension Secondary Color:<input type="color" id="EXTCOLOR2" value="#080847"></p>
+    <button onclick="end();">Export Extension</button>
+    <p>_________________________________</p>
+    <h2>Input</h2>
+    <p>Input Name:<input type="text" id="inputName"></p>
+    <p>Input Type:<select id="inputType">
+      <option value="STRING">String</option>
+      <option value="NUMBER">Number</option>
+      <option value="BOOLEAN">Boolean</option>
+      <option value="COLOR">Color</option>
+      <option value="COSTUME">Costume</option>
+      <option value="SOUND">Sound</option>
+      <option value="ANGLE">Angle</option>
+      <option value="MATRIX">Matrix</option>
+      <option value="NOTE">Note</option>
+      <option value="empty">Empty</option>
+    </select></p>
+    <p>Input Default:<input type="text" id="inputDefault"></p>
+    <button onclick="addInput()">Add Input</button>
+    <p>_________________________________</p>
+    <h2>Block</h2>
+    <p>Name:<input type="text" id="Name"></p>
+    <p>ID:<input type="text" id="ID"></p>
+    <p>Type: <select id="Type">
+      <option value="COMMAND">Block</option>
+      <option value="REPORTER">Reporter</option>
+      <option value="BOOLEAN">Boolean</option>
+    </select></p>
+    <label class="checkbox-container">
+      <input type="checkbox" id="Monitor" checked>
+      <span class="checkmark"></span>
+      Disable Monitor?
+    </label>
+    <p>JavaScript:<textarea placeholder="JavaScript Here..." id="JS"></textarea></p>
+    <button onclick="add()">Add Block</button>
+    <button onclick="generateJS()" id="generateWithAI">Generate JS with AI (Soon!)</button>
+    <p></p>
+    <button onclick="alert('Gamer Mertcan: idea, CSS And HTML\nConnor: JavaScript, CSS And HTML');">Credits</button>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <button id="save" onclick="save();">Save</button>
+    <button id="load" onclick="load();">Load</button>
+    <input type="file" id="fileInput" style="display: none;" accept=".ggb"/>
+  </div>
+  <div id="blocks"><h1>Blocks</h1><p>Here will be displayed all the blocks you added.</p><div id="blockslist"></div></div>
+  
+  <script>
+let blocks = "";
+let inputsArray = [];
+const fileInput = document.getElementById('fileInput');
+let unlockedAI = false;
+
+function addInput() {
+  const inputInputName = document.getElementById("inputName").value;
+  const inputInputType = document.getElementById("inputType").value;
+  const inputInputDefault = document.getElementById("inputDefault").value;
+
+  const inputObject = `"${inputInputName}": {
+    type: Scratch.ArgumentType.${inputInputType},
+    defaultValue: "${inputInputDefault}"
+  }`;
+
+  inputsArray.push(inputObject);
+}
+
+function UnlockAI() {
+    document.getElementById('generateWithAI').textContent = "Generate JS with AI";
+    unlockedAI = true;
+}
+
+function add() {
+  const inputName = document.getElementById("Name").value;
+  const inputID = document.getElementById("ID").value;
+  const inputJS = document.getElementById("JS").value;
+  const inputType = document.getElementById("Type").value;
+  const inputMonitor = document.getElementById("Monitor").checked;
+
+  const inputs = inputsArray.join(',\n');
+
+  blocks += `
+    blocks.push({
+      opcode: "${inputID}",
+      blockType: Scratch.BlockType.${inputType},
+      text: "${inputName}",
+      arguments: {${inputs}},
+      disableMonitor: ${inputMonitor},
+      isEdgeActivated: false
+    });
+
+    Extension.prototype["${inputID}"] = async (args, util) => {
+      ${inputJS}
+    };
+  `;
+
+  document.getElementById("blockslist").innerHTML += `[${inputType == "COMMAND" ? "BLOCK" : inputType == "REPORTER" ? "Reporter" : inputType == "BOOLEAN" ? "Boolean" : "UNKNOWN"}] ${inputName}<br>`;
+  inputsArray = [];
+}
+
+function save() {
+  const EXTNAME = document.getElementById("EXT").value;
+  const code = `README: This file is not meant to be opened! Please do not change anything.  
+--BLOCKSVAR:START--${blocks}--BLOCKSVAR:END--
+--BLOCKSHTML:START--${document.getElementById("blockslist").innerHTML}--BLOCKSHTML:END--`;
+  const codeBlob = new Blob([code], { type: 'application/javascript' });
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(codeBlob);
+  downloadLink.download = `${EXTNAME}.ggb`;
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
+
+function getContentBetween(startString, stopString, inputString) {
+    // Check if inputString is defined and is a string
+    if (typeof inputString !== 'string') {
+        console.error('inputString must be a valid string');
+        return "";
+    }
+
+    // Find the indices of startString and stopString
+    const start = inputString.indexOf(startString);
+    const end = inputString.indexOf(stopString);
+
+    // Ensure that the start and end indices are valid
+    if (start === -1 || end === -1 || end <= start + startString.length) {
+        console.warn('Start or stop string not found or in the wrong order');
+        return "";
+    }
+
+    // Extract and return the content between the start and stop strings
+    return inputString.slice(start + startString.length, end).trim();
+}
+
+function load() {
+  fileInput.click();
+}
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileContent = e.target.result;
+      blocks = getContentBetween('--BLOCKSVAR:START--', '--BLOCKSVAR:END--', fileContent);
+      document.getElementById('blockslist').innerHTML = getContentBetween('--BLOCKSHTML:START--', '--BLOCKSHTML:END--', fileContent);
+      alert('The extension has loaded.')
+    };
+    reader.onerror = (e) => {
+      alert("Something went wrong while reading this file.")
+    }
+    reader.readAsText(file);
+  }
+})
+
+function end() {
+  const EXTNAME = document.getElementById("EXT").value;
+  const EXTID = document.getElementById("EXTID").value;
+  const EXTCOLOR = document.getElementById("EXTCOLOR").value;
+  const EXTCOLOR2 = document.getElementById("EXTCOLOR2").value;
+
+  const code = `
+  /*
+  Made With StarBuilder! 🌟
+  https://star-builder.vercel.app
+  */
+(async function(Scratch) {
+  let blocks = [];
+
+  if (!Scratch.extensions.unsandboxed) {
+    alert("${EXTNAME} has to be run unsandboxed!");
+    return;
+  }
+
+  class Extension {
+    getInfo() {
+      return {
+        id: "${EXTID}",
+        name: "${EXTNAME}",
+        color1: "${EXTCOLOR}",
+        color2: "${EXTCOLOR2}",
+        blocks: blocks
+      };
+    }
+  }
+
+  ${blocks}
+
+  Scratch.extensions.register(new Extension());
+})(Scratch);
+`;
+
+  const codeBlob = new Blob([code], { type: 'application/javascript' });
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(codeBlob);
+  downloadLink.download = `${EXTNAME}.js`;
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+};
+
+  async function generateJS() {
+    if (unlockedAI == "true") {
+        const extra = prompt("AI will see type of the block and name. Enter any extra details below.");
+        if (extra == null) {
+            const blockType = document.getElementById("Type").value;
+            const blockName = document.getElementById("Name").value;
+
+            fetch('https://ai.aerioncloud.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 1a243c046d7f496fa52a6dd5f411eb5a', // old shit (its not working anymore and i used a paid thing)
+            },
+            body: JSON.stringify({ messages: [{role: "user", content: `Generate JS code for my scratch block of type ${blockType}. If its not command, include a "return" statement. The name is "${blockName}". Use "args['INPUT ID']" where "INPUT ID" is ID of an input, content of which you want to get for inputs like [INPUT ID]. Inputs are visualized with "[INPUT ID]" in block's name where INPUT ID is id of an actual input. You can add more than 1 line to the code. You can use things like fetch etc. Respond only with generated code. Generate code ONLY for how block works. There is no defineBlock function etc. But you should NOT add this in a code block unlike me ok? Example for how the "[number1] + [number 2]" block works:
+        \`\`\`js
+        return args['number1'] + args['number2'];
+        \`\`\``}], model: "gpt-4o" }),
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById('JS').value = data.choices[0].message.content.replace(/```js/g, '```').replace(/```/g, ''))
+            .catch(console.error);
+        } else {
+            const blockType = document.getElementById("Type").value;
+            const blockName = document.getElementById("Name").value;
+
+            fetch('https://api.penguinai.tech/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 1a243c046d7f496fa52a6dd5f411eb5a', // Replace with your API key
+            },
+            body: JSON.stringify({ messages: [{role: "user", content: `Generate JS code for my scratch block of type ${blockType}. If its not command, include a "return" statement. The name is "${blockName}". Use "args['INPUT ID']" where "INPUT ID" is ID of an input, content of which you want to get for inputs like [INPUT ID]. Inputs are visualized with "[INPUT ID]" in block's name where INPUT ID is id of an actual input. You can add more than 1 line to the code. You can use things like fetch etc. Respond only with generated code. Generate code ONLY for how block works. There is no defineBlock function etc. But you should NOT add this in a code block unlike me ok? Some extra details: ${extra}. Example for how the "[number1] + [number 2]" block works:
+        \`\`\`js
+        return args['number1'] + args['number2'];
+        \`\`\``}], model: "gpt-4o" }),
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById('JS').value = data.choices[0].message.content.replace(/```js/g, '```').replace(/```/g, ''))
+            .catch(console.error);
+        }
+    }
+  }
+  </script>
+</body>
+</html>
