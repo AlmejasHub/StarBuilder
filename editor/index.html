@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GGBuilder</title>
-  <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=FCwV_4DlZCt9mBnkfCiPW7UrAgrcbIUE8PIIS-c4aiFkjdNMHO2hfqFi2U1U4PQRTgATD-xUq8Gg3mUX5DK2-3-qIwnC7Vjz3aYsX1kZF4jXQ29CD2RhlYETNLubSgxeYGo-ZsbiSOWOWCmO8xhZdct_wi5YiOM-WQnOHQKi1sZp2_ZRPSlYpsajFTNvo43vrtmVUZ3-apnJI6hT7xYpHFgN5YG4jw_gBI8sx-br601LYP5l8TNVFqMfpFjOBX_AxApOs8ii7tX3KJPs_ACAag" charset="UTF-8"></script><style>
+  <title>StarBuilder - editor</title>
+  <script type="text/javascript" src="https://connor.ct.ws/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=FCwV_4DlZCt9mBnkfCiPW7UrAgrcbIUE8PIIS-c4aiFkjdNMHO2hfqFi2U1U4PQRTgATD-xUq8Gg3mUX5DK2-3-qIwnC7Vjz3aYsX1kZF4jXQ29CD2RhlYETNLubSgxeYGo-ZsbiSOWOWCmO8xhZdct_wi5YiOM-WQnOHQKi1sZp2_ZRPSlYpsajFTNvo43vrtmVUZ3-apnJI6hT7xYpHFgN5YG4jw_gBI8sx-br601LYP5l8TNVFqMfpFjOBX_AxApOs8ii7tX3KJPs_ACAag" charset="UTF-8"></script><style>
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -146,6 +145,80 @@
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
     }
+        .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 0;
+      width: 300px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      background-color: #ffeb3b;
+      color: black;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"], select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      width: 100%; 
+      box-sizing: border-box;
+    }
+
+    .add-input-btn {
+      margin-top: 10px;
+      background-color: #ffeb3b;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .add-input-btn:hover {
+      transform: scale(1.03);
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -159,6 +232,37 @@
     <p>Extension Secondary Color:<input type="color" id="EXTCOLOR2" value="#080847"></p>
     <button onclick="end();">Export Extension</button>
     <p>_________________________________</p>
+    <div id="inputModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      Add New Input
+      <span class="close" onclick="closeModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <label for="inputId">ID:</label>
+      <input type="text" id="inputName" placeholder="ID">
+
+      <label for="inputType">Type:</label>
+      <select id="inputType">
+      <option value="STRING">String</option>
+      <option value="NUMBER">Number</option>
+      <option value="BOOLEAN">Boolean</option>
+      <option value="COLOR">Color</option>
+      <option value="COSTUME">Costume</option>
+      <option value="SOUND">Sound</option>
+      <option value="ANGLE">Angle</option>
+      <option value="MATRIX">Matrix</option>
+      <option value="NOTE">Note</option>
+      <option value="empty">Empty</option>
+      </select>
+
+      <label for="inputDefault">Input Default:</label>
+      <input type="text" id="inputDefault" placeholder="Hello, world!">
+
+      <button class="add-input-btn" onclick="addInput()">+ Add Input</button>
+    </div>
+  </div>
+</div>
     <h2>Input</h2>
     <p>Input Name:<input type="text" id="inputName"></p>
     <p>Input Type:<select id="inputType">
@@ -174,7 +278,7 @@
       <option value="empty">Empty</option>
     </select></p>
     <p>Input Default:<input type="text" id="inputDefault"></p>
-    <button onclick="addInput()">Add Input</button>
+    <button onclick="openModal()">Add Input</button>
     <p>_________________________________</p>
     <h2>Block</h2>
     <p>Name:<input type="text" id="Name"></p>
