@@ -298,6 +298,11 @@ function end() {
         }
     }
   }
+
+    window.addEventListener("beforeunload", (event) => {
+    event.preventDefault();
+    event.returnValue = "Are you sure to exit StarBuilder?";
+});
   </script>
 </body>
 </html>
