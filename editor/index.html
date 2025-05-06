@@ -76,7 +76,26 @@
   </div>
   <div class="tab-content hidden" id="content-2">Contenido de la pestaña 2</div>
   <div class="tab-content hidden" id="content-3">Contenido de la pestaña 3</div>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
 
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabNumber = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        contents.forEach(content => {
+          content.classList.add('hidden');
+        });
+
+        const selectedContent = document.getElementById(`content-${tabNumber}`);
+        selectedContent.classList.remove('hidden');
+      });
+    });
+  </script>
   <script>
 let blocks = "";
 let inputsArray = [];
