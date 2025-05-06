@@ -300,6 +300,25 @@ function end() {
     overlay.appendChild(alertBox);
     document.body.appendChild(overlay);
   }
+
+      const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabNumber = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        contents.forEach(content => {
+          content.classList.add('hidden');
+        });
+
+        const selectedContent = document.getElementById(`content-${tabNumber}`);
+        selectedContent.classList.remove('hidden');
+      });
+    });
   </script>
 </body>
 </html>
