@@ -5,19 +5,10 @@
   <script type="text/javascript" src="https://connor.ct.ws/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=FCwV_4DlZCt9mBnkfCiPW7UrAgrcbIUE8PIIS-c4aiFkjdNMHO2hfqFi2U1U4PQRTgATD-xUq8Gg3mUX5DK2-3-qIwnC7Vjz3aYsX1kZF4jXQ29CD2RhlYETNLubSgxeYGo-ZsbiSOWOWCmO8xhZdct_wi5YiOM-WQnOHQKi1sZp2_ZRPSlYpsajFTNvo43vrtmVUZ3-apnJI6hT7xYpHFgN5YG4jw_gBI8sx-br601LYP5l8TNVFqMfpFjOBX_AxApOs8ii7tX3KJPs_ACAag" charset="UTF-8"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>body {font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #ccffcc; display: flex; flex-direction: row;} .frame {background-color: #c0ff85; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); max-width: 400px; margin: 50px auto; flex-grow: 1;} .frame h1 {text-align: center; color: #333; margin-bottom: 30px;} .frame input[type="text"], .frame input[type="color"], .frame textarea, .frame select {width: 100%; padding: 12px 20px; margin: 8px 0; resize: vertical; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; font-family: 'Roboto', sans-serif; box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);} #blocks {background-color: #c0ff85; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); max-width: 400px; margin: 50px auto; flex-grow: 1; overflow-y: auto;} #blocks h1 {text-align: center; color: #333; margin-bottom: 30px;} #blocks p {color: #333; font-size: 20px; margin-bottom: 10px; text-align: center;} .checkbox-container {display: block; position: relative; padding-left: 35px; cursor: pointer; font-size: 16px; user-select: none;} .checkbox-container input {position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;} .checkmark {position: absolute; top: 0; left: 0; height: 25px; width: 25px; background-color: #eee; border-radius: 5px;} .checkbox-container:hover input ~ .checkmark {background-color: #ccc;} .checkbox-container input:checked ~ .checkmark {background-color: #fff70a;} .checkmark:after {content: ""; position: absolute; display: none;} .checkbox-container input:checked ~ .checkmark:after {display: block;} .checkbox-container .checkmark:after {left: 9px; top: 5px; width: 5px; height: 10px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg);} .modal {display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);} .modal-content {background-color: white; margin: 10% auto; padding: 0; width: 300px; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.3);} .modal-header {background-color: #ffeb3b; color: black; padding: 15px; font-size: 18px; font-weight: bold; text-align: center; position: relative;} .close {position: absolute; right: 10px; top: 10px; font-size: 20px; cursor: pointer;} .modal-body {padding: 20px; display: flex; flex-direction: column; gap: 10px;} label {font-weight: bold;} input[type="text"], select {padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; width: 100%; box-sizing: border-box;} body button {margin-top: 10px; background-color: #ffeb3b; border: none; padding: 10px; font-weight: bold; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: transform 0.2s;} body button:hover {transform: scale(1.03);}
-.custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 9999; } .custom-alert-box { background: white; padding: 20px 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); font-family: Arial, sans-serif; text-align: center; max-width: 90%; width: 300px; } .ai { background: linear-gradient(to bottom, #ea00ff, #00bfff); color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }</style>
+.custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 9999; } .custom-alert-box { background: white; padding: 20px 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); font-family: Arial, sans-serif; text-align: center; max-width: 90%; width: 300px; } .ai { background: linear-gradient(to bottom, #ea00ff, #00bfff); color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; } .tab-container {display: flex; border-bottom: 2px solid #ccc; margin-bottom: 10px;} .tab {padding: 12px 24px; cursor: pointer; background-color: #e9ecef; border: 1px solid #ccc; border-bottom: none; margin-right: 5px; border-radius: 10px 10px 0 0; transition: background-color 0.3s, color 0.3s;} .tab:hover {background-color: #dee2e6;} .tab.active {background-color: white; font-weight: bold; color: #000; border-top: 3px solid #007bff;} .tab-content {border: 1px solid #ccc; padding: 20px; background-color: white; border-radius: 0 0 10px 10px; animation: fadeIn 0.3s ease-in-out;} .tab-content.hidden {display: none;} @keyframes fadeIn {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}</style>
 </head>
 <body>
-  <div class="frame">
-    <h1>GGBuilder</h1>
-    <h2>Extension</h2>
-    <p>Extension Name:<input type="text" placeholder="ex. Extension" value="My Extension" id="EXT"></p>
-    <p>Extension ID:<input type="text" placeholder="ex. extensionid" value="extensionid" id="EXTID"></p>
-    <p>Extension Primary Color:<input type="color" id="EXTCOLOR" value="#082799"></p>
-    <p>Extension Secondary Color:<input type="color" id="EXTCOLOR2" value="#080847"></p>
-    <button onclick="end();">Export Extension</button>
-    <p>_________________________________</p>
-    <div id="inputModal" class="modal">
+      <div id="inputModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
       Add New Input
@@ -57,6 +48,36 @@
     document.getElementById("inputModal").style.display = "none";
   }
 </script>
+  
+  <div class="tab-container">
+    <div class="tab active" data-tab="1">Blocks</div>
+    <div class="tab" data-tab="2">Category</div>
+    <div class="tab" data-tab="3">Menus</div>
+  </div>
+
+  <div class="tab-content" id="content-1">
+    <h2>Block</h2>                        <button onclick="openModal()">Add Input</button>
+    <p>Name:<input type="text" id="Name"></p>
+    <p>ID:<input type="text" id="ID"></p>
+    <p>Type: <select id="Type">
+      <option value="COMMAND">Block</option>
+      <option value="REPORTER">Reporter</option>
+      <option value="BOOLEAN">Boolean</option>
+    </select></p>
+    <label class="checkbox-container">
+      <input type="checkbox" id="Monitor" checked>
+      <span class="checkmark"></span>
+      Disable Monitor?
+    </label>
+    <p>JavaScript:<textarea placeholder="JavaScript Here..." id="JS"></textarea></p>
+    <button onclick="add()">Add Block</button>
+    <button class="ai" onclick="generateJS()" id="generateWithAI">Generate JS with AI (Soon!)</button>
+    
+  </div>
+  <div class="tab-content hidden" id="content-2">Contenido de la pestaña 2</div>
+  <div class="tab-content hidden" id="content-3">Contenido de la pestaña 3</div>
+
+
 
     <h2>Block</h2>                        <button onclick="openModal()">Add Input</button>
     <p>Name:<input type="text" id="Name"></p>
