@@ -145,7 +145,7 @@ function save() {
   const codeBlob = new Blob([code], { type: 'application/javascript' });
   const downloadLink = document.createElement('a');
   downloadLink.href = URL.createObjectURL(codeBlob);
-  downloadLink.download = `${EXTNAME}.ggb`;
+  downloadLink.download = `${EXTNAME}.sb`;
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
