@@ -59,7 +59,7 @@
   </div>
 
   <div class="tab-content" id="content-1">
-    <h2>Block</h2><button onclick="openModal()">Add Input</button>
+    <h2>Block</h2>
     <p>Name:<input type="text" id="Name"></p>
     <p>ID:<input type="text" id="ID"></p>
     <p>Type: <select id="Type">
@@ -72,8 +72,8 @@
       <span class="checkmark"></span>
       Disable Monitor?
     </label>
-    <p>JavaScript:<textarea placeholder="JavaScript Here..." id="JS"></textarea></p>
-    <button onclick="add()">Add Block</button>
+    <p>JavaScript:<br><textarea placeholder="JavaScript Here..." id="JS"></textarea></p>
+    <button onclick="add()">Add Block</button><button onclick="openModal()">Add Input</button>
     <button class="ai" onclick="generateJS()" id="generateWithAI">Generate JS with AI (Soon!)</button>
     
   </div>
