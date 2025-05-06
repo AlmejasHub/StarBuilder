@@ -77,36 +77,6 @@
   <div class="tab-content hidden" id="content-2">Contenido de la pestaña 2</div>
   <div class="tab-content hidden" id="content-3">Contenido de la pestaña 3</div>
 
-
-
-    <h2>Block</h2>                        <button onclick="openModal()">Add Input</button>
-    <p>Name:<input type="text" id="Name"></p>
-    <p>ID:<input type="text" id="ID"></p>
-    <p>Type: <select id="Type">
-      <option value="COMMAND">Block</option>
-      <option value="REPORTER">Reporter</option>
-      <option value="BOOLEAN">Boolean</option>
-    </select></p>
-    <label class="checkbox-container">
-      <input type="checkbox" id="Monitor" checked>
-      <span class="checkmark"></span>
-      Disable Monitor?
-    </label>
-    <p>JavaScript:<textarea placeholder="JavaScript Here..." id="JS"></textarea></p>
-    <button onclick="add()">Add Block</button>
-    <button class="ai" onclick="generateJS()" id="generateWithAI">Generate JS with AI (Soon!)</button>
-    <p></p>
-    <button onclick="alert('Gamer Mertcan: idea, CSS And HTML\nConnor: JavaScript, CSS And HTML');">Credits</button>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <button id="save" onclick="save();">Save</button>
-    <button id="load" onclick="load();">Load</button>
-    <input type="file" id="fileInput" style="display: none;" accept=".ggb"/>
-  </div>
-  <div id="blocks"><h1>Blocks</h1><p>Here will be displayed all the blocks you added.</p><div id="blockslist"></div></div>
-  
   <script>
 let blocks = "";
 let inputsArray = [];
